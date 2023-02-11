@@ -1,0 +1,23 @@
+{
+  "name": "greatest-hero-backend",
+  "type": "module",
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  },
+  "scripts": {
+    "start:dev": "nodemon ./index.js",
+    "start": "NODE_ENV=production node ./index.js"
+  },
+  "dependencies": {
+    "cloudinary": "^1.32.0",
+    "cron": "^2.1.0",
+    "express": "^4.18.1",
+    "helmet": "^6.0.0",
+    "mongoose": "^6.5.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
