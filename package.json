@@ -1,6 +1,11 @@
 {
   "name": "greatest-hero-backend",
   "type": "module",
+  "scripts": {
+    "start:dev": "nodemon ./index.js",
+    "start": "NODE_ENV=production node ./index.js",
+    "prepare": "husky install"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
@@ -10,10 +15,6 @@
     "husky": "^8.0.3",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1"
-  },
-  "scripts": {
-    "start:dev": "nodemon ./index.js",
-    "start": "NODE_ENV=production node ./index.js"
   },
   "dependencies": {
     "cloudinary": "^1.32.0",
