@@ -2,6 +2,8 @@
   "name": "greatest-hero-backend",
   "type": "module",
   "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
