@@ -2,7 +2,7 @@
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
-  "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+  "importOrder": ["@(.*)", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }
