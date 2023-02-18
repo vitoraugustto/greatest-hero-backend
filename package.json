@@ -1,6 +1,7 @@
 {
   "name": "greatest-hero-backend",
   "type": "module",
+  "license": "UNLICENSED",
   "scripts": {
     "start:dev": "nodemon ./index.js",
     "start": "NODE_ENV=production node ./index.js",
