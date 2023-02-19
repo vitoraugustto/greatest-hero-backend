@@ -3,6 +3,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 
 import { DB_PASSWORD, DB_USERNAME } from './.env.js';
+import './listeners/webSocket.js';
 import { addGold } from './src/crons/addGold.js';
 import heroRoutes from './src/routes/heroRoutes.js';
 import itemsRoutes from './src/routes/itemsRoutes.js';
