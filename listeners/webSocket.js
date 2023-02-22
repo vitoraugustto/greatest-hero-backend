@@ -30,6 +30,11 @@ wss.on('connection', (ws) => {
     );
   }, GOBLIN.velocity);
 
+  ws.on('close', async () => {
+    await Hero.updateOne({}, { 'status.hp': 100 });
+
+    ws.close();
+  });
+
   ws.on('error', (err) => ws.send(err));
-  ws.send('CONNECTED');
 });
