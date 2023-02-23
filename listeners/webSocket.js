@@ -17,7 +17,7 @@ const GOBLIN = {
 };
 
 wss.on('connection', (ws) => {
-  setInterval(async () => {
+  const interval = setInterval(async () => {
     const hero = await Hero.findOne();
     const currentHeroHp = hero.status.hp;
     const damagedHeroHp = currentHeroHp - GOBLIN.status.attack;
@@ -31,6 +31,7 @@ wss.on('connection', (ws) => {
   }, GOBLIN.velocity);
 
   ws.on('close', async () => {
+    clearInterval(interval);
     await Hero.updateOne({}, { 'status.hp': 100 });
 
     ws.close();
