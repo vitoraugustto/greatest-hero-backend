@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
       {
         ...hero,
         gold: 0,
-        status: { attack: 1, defense: 0, hp: 100 },
+        status: { attack: 1, defense: 0, hp: 100, maxHp: 100 },
         inventory: [],
         equipment: [],
       },
