@@ -11,6 +11,7 @@ const GOBLIN = {
   velocity: 3000,
   status: {
     hp: 25,
+    maxHp: 25,
     attack: 1,
     defense: 1,
   },
@@ -24,7 +25,7 @@ wss.on('connection', (ws) => {
 
     await Hero.updateOne({}, { 'status.hp': damagedHeroHp });
 
-    ws.send(JSON.stringify([hero, GOBLIN]));
+    ws.send(JSON.stringify({ hero, monster: GOBLIN }));
   }, GOBLIN.velocity);
 
   ws.on('close', async () => {
