@@ -23,11 +23,7 @@ wss.on('connection', (ws) => {
     const damagedHeroHp = currentHeroHp - GOBLIN.status.attack;
 
     await Hero.updateOne({}, { 'status.hp': damagedHeroHp });
-    ws.send(
-      `O ${GOBLIN.name} te atacou e desferiu ${
-        GOBLIN.status.attack
-      } de dano. Vida atual: ${JSON.stringify(damagedHeroHp)}`
-    );
+    ws.send(JSON.stringify(hero));
   }, GOBLIN.velocity);
 
   ws.on('close', async () => {
