@@ -6,33 +6,22 @@ const PORT = 8080;
 
 export const wss = new WebSocketServer({ port: PORT });
 
-const GOBLIN = {
-  name: 'goblin',
-  velocity: 3000,
-  status: {
-    hp: 25,
-    maxHp: 25,
-    attack: 1,
-    defense: 1,
-  },
-};
-
 wss.on('connection', (ws) => {
   const interval = setInterval(async () => {
     const hero = await Hero.findOne();
     const currentHeroHp = hero.status.hp;
-    const damagedHeroHp = currentHeroHp - GOBLIN.status.attack;
+    const damagedHeroHp = currentHeroHp - MONSTERS[0].status.attack;
 
     await Hero.updateOne({}, { 'status.hp': damagedHeroHp });
 
     ws.send(
       JSON.stringify({
         hero,
-        monster: GOBLIN,
-        combat: { damageTaken: GOBLIN.status.attack },
+        monster: MONSTERS[0],
+        combat: { damageTaken: MONSTERS[0].status.attack },
       })
     );
-  }, GOBLIN.velocity);
+  }, MONSTERS[0].velocity);
 
   ws.on('close', async () => {
     clearInterval(interval);
@@ -43,3 +32,26 @@ wss.on('connection', (ws) => {
 
   ws.on('error', (err) => ws.send(err));
 });
+
+const MONSTERS = [
+  {
+    name: 'goblin',
+    velocity: 3000,
+    status: {
+      hp: 25,
+      maxHp: 25,
+      attack: 3,
+      defense: 1,
+    },
+  },
+  {
+    name: 'slime',
+    velocity: 2500,
+    status: {
+      hp: 12,
+      maxHp: 12,
+      attack: 1,
+      defense: 1,
+    },
+  },
+];
