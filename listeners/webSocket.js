@@ -25,7 +25,13 @@ wss.on('connection', (ws) => {
 
     await Hero.updateOne({}, { 'status.hp': damagedHeroHp });
 
-    ws.send(JSON.stringify({ hero, monster: GOBLIN }));
+    ws.send(
+      JSON.stringify({
+        hero,
+        monster: GOBLIN,
+        combat: { damageTaken: GOBLIN.status.attack },
+      })
+    );
   }, GOBLIN.velocity);
 
   ws.on('close', async () => {
