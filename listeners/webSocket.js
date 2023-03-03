@@ -9,14 +9,15 @@ export const wss = new WebSocketServer({ port: PORT });
 wss.on('connection', (ws) => {
   const interval = setInterval(async () => {
     const hero = await Hero.findOne();
-    const currentHeroHp = hero.status.hp;
-    const damagedHeroHp = currentHeroHp - MONSTERS[0].status.attack;
+    const heroStatus = { ...hero.status };
 
-    await Hero.updateOne({}, { 'status.hp': damagedHeroHp });
+    heroStatus.hp -= MONSTERS[0].status.attack;
+
+    await Hero.updateOne({}, { status: heroStatus });
 
     ws.send(
       JSON.stringify({
-        hero,
+        hero: { ...hero.toObject(), status: heroStatus },
         monster: MONSTERS[0],
         combat: { damageTaken: MONSTERS[0].status.attack },
       })
