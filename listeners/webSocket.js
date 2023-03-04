@@ -22,7 +22,7 @@ wss.on('connection', (ws) => {
         combat: { damageTaken: MONSTERS[0].status.attack },
       })
     );
-  }, MONSTERS[0].velocity);
+  }, MONSTERS[0].status.attackSpeed);
 
   ws.on('close', async () => {
     clearInterval(interval);
@@ -37,22 +37,22 @@ wss.on('connection', (ws) => {
 const MONSTERS = [
   {
     name: 'goblin',
-    velocity: 3000,
     status: {
       hp: 25,
       maxHp: 25,
       attack: 3,
       defense: 1,
+      attackSpeed: 3000,
     },
   },
   {
     name: 'slime',
-    velocity: 2500,
     status: {
       hp: 12,
       maxHp: 12,
       attack: 1,
       defense: 1,
+      attackSpeed: 2500,
     },
   },
 ];
