@@ -14,6 +14,7 @@ const heroSchema = new Schema(
       defense: Number,
       hp: Number,
       maxHp: Number,
+      attackSpeed: Number,
     },
     inventory: [itemSchema],
     equipment: [itemSchema],
