@@ -11,18 +11,18 @@ wss.on('connection', (ws) => {
     const hero = await Hero.findOne();
     const heroStatus = { ...hero.status };
 
-    heroStatus.hp -= MONSTERS[0].status.attack;
+    heroStatus.hp -= ENEMIES[0].status.attack;
 
     await Hero.updateOne({}, { status: heroStatus });
 
     ws.send(
       JSON.stringify({
         hero: { ...hero.toObject(), status: heroStatus },
-        monster: MONSTERS[0],
-        combat: { damageTaken: MONSTERS[0].status.attack },
+        enemy: ENEMIES[0],
+        combat: { damageTaken: ENEMIES[0].status.attack },
       })
     );
-  }, MONSTERS[0].status.attackSpeed);
+  }, ENEMIES[0].status.attackSpeed);
 
   ws.on('close', async () => {
     clearInterval(interval);
@@ -34,7 +34,7 @@ wss.on('connection', (ws) => {
   ws.on('error', (err) => ws.send(err));
 });
 
-const MONSTERS = [
+const ENEMIES = [
   {
     name: 'goblin',
     status: {
