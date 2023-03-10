@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { DB_PASSWORD, DB_USERNAME } from './.env.js';
 import './listeners/webSocket.js';
 import { addGold } from './src/crons/addGold.js';
+import enemiesRoutes from './src/routes/enemiesRoutes.js';
 import heroRoutes from './src/routes/heroRoutes.js';
 import itemsRoutes from './src/routes/itemsRoutes.js';
 import storeRoutes from './src/routes/storeRoutes.js';
@@ -48,6 +49,7 @@ app.use(express.json());
 app.use('/api/v1/items', itemsRoutes);
 app.use('/api/v1/hero', heroRoutes);
 app.use('/api/v1/store', storeRoutes);
+app.use('/api/v1/enemies', enemiesRoutes);
 
 mongoose
   .connect(
