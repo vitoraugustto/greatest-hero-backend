@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const enemySchema = new Schema(
   {
     name: String,
+    image: String,
     status: {
       attack: Number,
       defense: Number,
