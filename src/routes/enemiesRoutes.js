@@ -55,4 +55,20 @@ router.get('/', async (_, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const enemy = await Enemy.findById(id);
+
+    if (!enemy) {
+      throw 'Item não encontrado.';
+    }
+
+    res.status(200).json(enemy);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 export default router;
