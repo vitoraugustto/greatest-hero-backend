@@ -71,4 +71,22 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const enemy = await Enemy.findById(id);
+
+    if (!enemy) {
+      throw 'Inimigo não encontrado.';
+    }
+
+    await Enemy.deleteOne({ _id: id });
+
+    res.status(200).json({ message: 'Inimigo deletado com sucesso.' });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 export default router;
