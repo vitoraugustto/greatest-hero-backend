@@ -62,7 +62,7 @@ router.get('/:id', async (req, res) => {
     const enemy = await Enemy.findById(id);
 
     if (!enemy) {
-      throw 'Item não encontrado.';
+      throw 'Inimigo não encontrado.';
     }
 
     res.status(200).json(enemy);
