@@ -8,10 +8,11 @@ const PORT = 8080;
 export const wss = new WebSocketServer({ port: PORT });
 
 wss.on('connection', async (ws) => {
-  const hero = await Hero.findOne();
   const enemy = await Enemy.findOne({ name: 'Goblin' });
 
   const interval = setInterval(async () => {
+    const hero = await Hero.findOne();
+
     const heroStatus = { ...hero.status };
     heroStatus.hp -= enemy.status.attack;
 
