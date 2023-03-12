@@ -101,7 +101,7 @@ router.patch('/:id', async (req, res) => {
     });
 
     if (updatedEnemy.matchedCount === 0) {
-      res.status(422).json({ message: 'Item não encontrado.' });
+      res.status(422).json({ message: 'Inimigo não encontrado.' });
       return;
     }
 
