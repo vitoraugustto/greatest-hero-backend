@@ -89,4 +89,26 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.patch('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const { name, status, image } = req.body;
+  const enemy = { name, status, image };
+
+  try {
+    const updatedEnemy = await Enemy.findOneAndUpdate({ _id: id }, enemy, {
+      new: true,
+    });
+
+    if (updatedEnemy.matchedCount === 0) {
+      res.status(422).json({ message: 'Item não encontrado.' });
+      return;
+    }
+
+    res.status(200).json(updatedEnemy);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 export default router;
