@@ -21,7 +21,7 @@ wss.on('connection', async (ws) => {
     }
 
     const heroStatus = { ...hero.status };
-    heroStatus.hp -= 49;
+    heroStatus.hp -= enemy.status.attack;
 
     await Hero.updateOne({}, { status: heroStatus });
 
