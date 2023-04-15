@@ -51,6 +51,7 @@ app.use('/api/v1/hero', heroRoutes);
 app.use('/api/v1/store', storeRoutes);
 app.use('/api/v1/enemies', enemiesRoutes);
 
+mongoose.set('strictQuery', false);
 mongoose
   .connect(
     `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@greatest-hero-cluster.iqrhkun.mongodb.net/?retryWrites=true&w=majority`
