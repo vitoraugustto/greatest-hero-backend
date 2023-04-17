@@ -1,9 +1,9 @@
 import express from 'express';
 import helmet from 'helmet';
 
-import './listeners/webSocket.js';
 import { connectDB } from './src/config/database.js';
 import { addGold } from './src/crons/addGold.js';
+import './src/listeners/webSocket.js';
 import enemiesRoutes from './src/routes/enemiesRoutes.js';
 import heroRoutes from './src/routes/heroRoutes.js';
 import itemsRoutes from './src/routes/itemsRoutes.js';

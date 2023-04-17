@@ -1,7 +1,7 @@
 import { WebSocketServer } from 'ws';
 
-import Enemy from '../src/models/Enemy.js';
-import Hero from '../src/models/Hero.js';
+import Enemy from '../models/Enemy.js';
+import Hero from '../models/Hero.js';
 
 const PORT = 8080;
 
