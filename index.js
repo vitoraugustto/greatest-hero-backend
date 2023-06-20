@@ -51,8 +51,6 @@ app.use('/api/v1/enemies', enemiesRoutes);
 
 connectDB.then(() => {
   app.listen(PORT, () => {
-    addGold.start();
-
     console.log('App listening on port', PORT);
   });
 });
