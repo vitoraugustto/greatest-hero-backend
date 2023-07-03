@@ -2,7 +2,6 @@ import express from 'express';
 import helmet from 'helmet';
 
 import { connectDB } from './src/config/database.js';
-import { addGold } from './src/crons/addGold.js';
 import './src/listeners/webSocket.js';
 import enemiesRoutes from './src/routes/enemiesRoutes.js';
 import heroRoutes from './src/routes/heroRoutes.js';
