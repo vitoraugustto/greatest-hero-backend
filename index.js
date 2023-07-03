@@ -1,7 +1,7 @@
 import express from 'express';
 import helmet from 'helmet';
 
-import { connectDB } from './src/config/database.js';
+import { databaseConnection } from './src/config/database.js';
 import './src/listeners/webSocket.js';
 import enemiesRoutes from './src/routes/enemiesRoutes.js';
 import heroRoutes from './src/routes/heroRoutes.js';
@@ -48,7 +48,7 @@ app.use('/api/v1/hero', heroRoutes);
 app.use('/api/v1/store', storeRoutes);
 app.use('/api/v1/enemies', enemiesRoutes);
 
-connectDB.then(() => {
+databaseConnection.then(() => {
   app.listen(PORT, () => {
     console.log('App listening on port', PORT);
   });
