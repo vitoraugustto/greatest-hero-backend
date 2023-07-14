@@ -7,12 +7,12 @@ import enemiesRoutes from './src/routes/enemiesRoutes.js';
 import heroRoutes from './src/routes/heroRoutes.js';
 import itemsRoutes from './src/routes/itemsRoutes.js';
 import storeRoutes from './src/routes/storeRoutes.js';
-import { CLIENT_URL, VERCEL_URLS } from './src/utils/constants.js';
+import { CLIENT_URL } from './src/utils/constants.js';
 
 const app = express();
 
 const allowedOrigins = {
-  domains: [CLIENT_URL, ...VERCEL_URLS],
+  domains: [CLIENT_URL],
   default: CLIENT_URL,
 };
 
